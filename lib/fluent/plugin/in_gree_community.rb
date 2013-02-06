@@ -83,18 +83,12 @@ class Fluent::GreeCommunityInput < Fluent::Input
         next if @silent_startup && @first_time
 
         Fluent::Engine.emit(@tag, Fluent::Engine.now, {
-          'community' => {
-            'id' => @community.id,
-          },
-          'thread' => {
-            'id' => th.id,
-            'title' => th.title,
-          },
-          'comment' => {
-            'id' => comment.id,
-            'user_name' => comment.user_name,
-            'body_text' => comment.body_text.strip,
-          }
+          'community_id' => @community.id,
+          'thread_id' => th.id,
+          'title' => th.title,
+          'comment_id' => comment.id,
+          'user_name' => comment.user_name,
+          'body_text' => comment.body_text.strip
         })
       end
     end
